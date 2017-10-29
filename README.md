@@ -2,6 +2,23 @@
 
 <img src="snapshot.gif" width="500">
 
+## Project Development
+
+```js
+ng new RESTfulNode
+cd RESTfulNode && ng serve //then stop
+npm install express cors mongoose -S //similarly for others see package.json dependencies
+npm install chai chai-http -D //similarly for other see package.json devDependencies
+```
+
+Note: You do not want Angular (just API server) then remove src/**, .angular-cli.json, karma.conf.js, protractor.conf.js. And comment out following two lines from server.js
+
+```
+app.set('views', path.join(__dirname, 'dist'));
+app.use(express.static(path.join(__dirname, 'dist')));
+```
+Project should work
+
 ### APIs
 
 ```
