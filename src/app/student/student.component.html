@@ -1,0 +1,82 @@
+<p-growl [value]="msgs"></p-growl>
+
+<div class="fluid-container">
+  <!--{{selectedStudent | json}}-->
+  <div *ngIf="selectedStudent!=null && selectedStudent" style="padding:3px" class="ui-g-12 ui-md-6">
+    <p-panel [header]="selectedStudent.name">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="selectedStudent.name">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="selectedStudent.email">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <!--<input type="text" class="form-control" name="phone" [(ngModel)]="selectedStudent.phone">-->
+        <div>
+          <p-inputMask mask="(+91) 999-9999-123" [(ngModel)]="selectedStudent.phone" placeholder="(+91) 999-9999-123"></p-inputMask>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" class="form-control" name="address" [(ngModel)]="selectedStudent.address">
+      </div>
+      <div class="form-group">
+        <label>Courses</label>
+        <div>
+        <span *ngFor="let c of courses;let i = index;">
+          <input style="zoom:1.5;" type="checkbox" (change)="toggleCourse(c)" [checked]="selectedStudent.courses.includes(c) ? true: false">
+          {{c}} &nbsp; &nbsp; </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>DoB</label>
+        <div>
+          <!--<input type="text" class="form-control" name="dob" [(ngModel)]="selectedStudent.dob">-->
+          <p-calendar [(ngModel)]="selectedStudent.dob" dateFormat="yy-mm-dd" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2017"></p-calendar>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div>
+          <p-radioButton name="gender" value="male" label="Male" [(ngModel)]="selectedStudent.gender"></p-radioButton>
+          <p-radioButton name="gender" value="female" label="Female" [(ngModel)]="selectedStudent.gender"></p-radioButton>
+        </div>
+      </div>
+
+      <button class="btn btn-success" type="button" (click)="save()">Save</button>
+      <button class="btn btn-primary" type="button" (click)="selectedStudent = null">Back</button>
+    </p-panel>
+  </div>
+
+  <div *ngIf="selectedStudent==null && !selectedStudent" class="">
+
+    <p-dataGrid [value]="students" [paginator]="true" [rows]="8">
+      <p-header>
+        Students
+        <span class="pull-right" style="margin: -5px -9px;">
+          <input #gb type="text" pInputText size="20" placeholder="Search Student">
+          <button pButton type="button" (click)="search(gb.value)" icon="fa-search" class="ui-button-primary"></button>
+          <button pButton type="button" (click)="add()" icon="fa-plus" class="ui-button-primary"></button>
+        </span>
+      </p-header>
+      <ng-template let-student pTemplate="item">
+        <div style="padding:3px" class="ui-g-12 ui-md-3">
+          <p-panel [header]="student.name" [style]="{'text-align':'center'}">
+            <img src="assets/images/{{student.gender}}.svg" width="50">
+            <div class="student-detail">{{student.email}}</div>
+            <div class="student-detail">{{student.phone}}</div>
+            <hr class="ui-widget-content" style="border-top:0">
+            <button pButton type="button" (click)="selectStudent(student)" icon="fa-pencil-square-o" class="ui-button-primary"></button>
+            <button pButton type="button" (click)="delete(student)" icon="fa-trash-o" class="ui-button-danger"></button>
+          </p-panel>
+        </div>
+      </ng-template>
+    </p-dataGrid>
+  </div>
+</div>
+<p-confirmDialog></p-confirmDialog>

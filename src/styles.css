@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.ui-radiobutton-icon {
+  display: block !important;
+  font-size: .5em !important;
+  line-height: inherit !important;
+  margin-top: -1px !important;
+}
+
+a.ui-state-default{
+  color: #fff!important;
+}
