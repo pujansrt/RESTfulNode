@@ -2,6 +2,23 @@
 
 <img src="snapshot.gif" width="500">
 
+
+## TOC
+
+      * [RESTfulNode](#restfulnode)
+      * [Project Development](#project-development)
+         * [APIs](#apis)
+         * [Search Student](#search-student)
+         * [Running Server](#running-server)
+         * [Dev Testing](#dev-testing)
+         * [Using via Postman](#using-via-postman)
+      * [RESTfulNode](#restfulnode-1)
+      * [Development server](#development-server)
+      * [Code scaffolding](#code-scaffolding)
+      * [Build](#build)
+      * [Running unit tests](#running-unit-tests)
+
+
 ## Project Development
 
 ```js
