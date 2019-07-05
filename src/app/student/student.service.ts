@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, RequestOptions, Headers} from '@angular/http';
+import {Headers, Http, RequestOptions, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/Rx';
 import {Student} from './student.model';
